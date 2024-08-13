@@ -40,7 +40,11 @@ More features - less bugs!
 ### Freetz-NG-Download-Packages:
 
 ```
-git clone https://github.com/Systemx23x/FRITZ-Box_7490_freetz-ng/edit/master/.freetz-dl ~/.freetz-dl
+Download here Package cs500MB
+https://c.1und1.de/@1157988897574099954/yOXVgxFzQYK6b9qxVC9VLw
+cd ~/Downloads
+mkdir ~/.freetz-dl
+tar -xvf .freetz-dl.tar.gz -C ~/.freetz-dl
 ```
 
 So you have a few Downloaded Packages for Building (latest DL 12-08-2024)
