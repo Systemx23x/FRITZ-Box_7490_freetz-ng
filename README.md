@@ -41,7 +41,9 @@ More features - less bugs!
 
 ```
 Download here Package cs500MB
+```
 [Freetz-dl Package 500MB](https://c.1und1.de/@1157988897574099954/yOXVgxFzQYK6b9qxVC9VLw)
+```
 cd ~/Downloads
 mkdir ~/.freetz-dl
 tar -xvf .freetz-dl.tar.gz -C ~/.freetz-dl
