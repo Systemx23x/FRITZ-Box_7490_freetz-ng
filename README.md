@@ -42,11 +42,11 @@ More features - less bugs!
 ```
 Download here Package cs500MB
 ```
-[Freetz-dl Package 500MB](https://c.1und1.de/@1157988897574099954/yOXVgxFzQYK6b9qxVC9VLw)
+[Freetz-dl Packages size>>500MB](https://c.1und1.de/@1157988897574099954/yOXVgxFzQYK6b9qxVC9VLw)
 ```
 cd ~/Downloads
 mkdir ~/.freetz-dl
-tar -xvf .freetz-dl.tar.gz -C ~/.freetz-dl
+tar -xvf freetz-dl.tar.gz -C ~/.freetz-dl
 ```
 
 So you have a few Downloaded Packages for Building (latest DL 12-08-2024)
@@ -68,7 +68,6 @@ apt -y install autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl 
   make menuconfig
   make kernel-menuconfig
   make -i
-  # make help
 ```
 
 ### Flash firmware:
