@@ -12,13 +12,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### B
 
-  * **[busybox 1.36.1](busybox-host.md)<a id='busybox-host'></a>**<br>
+  * **[busybox 1.37.0](busybox-host.md)<a id='busybox-host'></a>**<br>
 
 ### C
 
-  * **[ca-bundle 2024-07-02](ca-bundle-host.md)<a id='ca-bundle-host'></a>**<br>
+  * **[ca-bundle 2024-09-24](ca-bundle-host.md)<a id='ca-bundle-host'></a>**<br>
 
-  * **[cmake 3.30.2](cmake-host.md)<a id='cmake-host'></a>**<br>
+  * **[cmake 3.30.4](cmake-host.md)<a id='cmake-host'></a>**<br>
 
   * **[cpio 2.15](cpio-host.md)<a id='cpio-host'></a>**<br>
 
@@ -34,7 +34,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### F
 
-  * **[fakeroot 1.35.1](fakeroot-host.md)<a id='fakeroot-host'></a>**<br>
+  * **[fakeroot 1.36](fakeroot-host.md)<a id='fakeroot-host'></a>**<br>
 
   * **[fastjar 0.98](fastjar-host.md)<a id='fastjar-host'></a>**<br>
 
@@ -70,7 +70,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[make 4.4.1](make-host.md)<a id='make-host'></a>**<br>
 
-  * **[meson 1.5.1](meson-host.md)<a id='meson-host'></a>**<br>
+  * **[meson 1.5.2](meson-host.md)<a id='meson-host'></a>**<br>
 
   * **[mklibs 0.1.45](mklibs-host.md)<a id='mklibs-host'></a>**<br>
 
@@ -90,7 +90,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### O
 
-  * **[openssl 3.0.14](openssl-host.md)<a id='openssl-host'></a>**<br>
+  * **[openssl 3.0.15](openssl-host.md)<a id='openssl-host'></a>**<br>
 
 ### P
 
@@ -104,7 +104,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[python2 2.7.18](python2-host.md)<a id='python2-host'></a>**<br>
 
-  * **[python3 3.12.5](python3-host.md)<a id='python3-host'></a>**<br>
+  * **[python3 3.12.6](python3-host.md)<a id='python3-host'></a>**<br>
 
   * **[python3-packaging 24.1](python3-packaging-host.md)<a id='python3-packaging-host'></a>**<br>
 
@@ -130,7 +130,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[tichksum 1.0](tichksum-host.md)<a id='tichksum-host'></a>**<br>
 
-  * **[tools 2024-07-29](tools-host.md)<a id='tools-host'></a>**<br>
+  * **[tools 2024-09-28](tools-host.md)<a id='tools-host'></a>**<br>
 
 ### U
 
