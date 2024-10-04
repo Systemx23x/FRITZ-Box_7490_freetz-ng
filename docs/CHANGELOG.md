@@ -61,13 +61,15 @@ Latest changes
    * cmake 3.30.4
    * fakeroot 1.36
    * kconfig 6.11
+   * lzma2 5.6.3
    * meson 1.5.2
    * openssl 3.0.15
    * precompiled host-tools 2024-09-28
-   * python 3.12.6
+   * python 3.12.7
 
  - AVM sources:
    * 5690 pro 7.62 - 5.4.213
+   * 6591     8.00 - 5.15.153 (corrupt)
    * 7530 ax  8.00 - 4.19.183 (corrupt)
    * 7590 ax  8.00 - 4.9.325 (corrupt)
 
@@ -95,7 +97,8 @@ Latest changes
    * Stunnel 5.73
    * SQLite 3.40.1/3.46.1
    * tmux 3.5
-   * Unbound 1.21.0
+   * Unbound 1.21.1
+   * XZ 5.6.3
 
  - Libraries:
    * expat 2.6.3
