@@ -183,11 +183,13 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - [source-files-FRITZ.Box_6660_Cable-arm-07.39-95784.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6660-cable/source-files-FRITZ.Box_6660_Cable-arm-07.39-95784.tar.gz)
    - [source-files-FRITZ.Box_6660_Cable-armp7-07.50.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6660-cable/source-files-FRITZ.Box_6660_Cable-armp7-07.50.tar.gz)
    - [source-files-FRITZ.Box_6660_Cable-armp7-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6660-cable/source-files-FRITZ.Box_6660_Cable-armp7-07.56.tar.gz)
+   - [source-files-FRITZ.Box_6660_Cable-armp7-08.00.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6660-cable/source-files-FRITZ.Box_6660_Cable-armp7-08.00.tar.gz)
    - [source-files-FRITZ.Box_6660_Cable-atom-07.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6660-cable/source-files-FRITZ.Box_6660_Cable-atom-07.29.tar.gz)
    - [source-files-FRITZ.Box_6660_Cable-atom-07.39-95485.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6660-cable/source-files-FRITZ.Box_6660_Cable-atom-07.39-95485.tar.gz)
    - [source-files-FRITZ.Box_6660_Cable-atom-07.39-95784.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6660-cable/source-files-FRITZ.Box_6660_Cable-atom-07.39-95784.tar.gz)
    - [source-files-FRITZ.Box_6660_Cable-atomp7-07.50.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6660-cable/source-files-FRITZ.Box_6660_Cable-atomp7-07.50.tar.gz)
    - [source-files-FRITZ.Box_6660_Cable-atomp7-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6660-cable/source-files-FRITZ.Box_6660_Cable-atomp7-07.56.tar.gz)
+   - [source-files-FRITZ.Box_6660_Cable-atomp7-08.00.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6660-cable/source-files-FRITZ.Box_6660_Cable-atomp7-08.00.tar.gz)
    - [source-files-FRITZ.Box_6660_Cable.atom-07.14.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6660-cable/source-files-FRITZ.Box_6660_Cable.atom-07.14.tar.gz)
    - [source-files-FRITZ.Box_6660_Cable.atom-07.15.tar.gz.gz](https://osp.avm.de/fritzbox/fritzbox-6660-cable/source-files-FRITZ.Box_6660_Cable.atom-07.15.tar.gz.gz)
    - [source-files-FRITZ.Box_6660_Cable.atom-07.20.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6660-cable/source-files-FRITZ.Box_6660_Cable.atom-07.20.tar.gz)
@@ -437,7 +439,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
 
 ### FritzDect
  * fritzsmart-gateway/
-   - [source-files-FRITZ.Smart_Gateway-07.60.tar.gz](https://osp.avm.de/fritzdect/fritzsmart-gateway/source-files-FRITZ.Smart_Gateway-07.60.tar.gz)
+   - [source-files-FRITZ.Smart_Gateway-07.61.tar.gz](https://osp.avm.de/fritzdect/fritzsmart-gateway/source-files-FRITZ.Smart_Gateway-07.61.tar.gz)
 
 ### FritzPowerline
  * fritzpowerline-1240-ax/
