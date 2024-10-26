@@ -58,35 +58,49 @@ Latest changes
 
  - Host tools:
    * busybox 1.37.0
-   * cmake 3.30.4
+   * cmake 3.30.5
    * fakeroot 1.36
    * kconfig 6.11
    * lzma2 5.6.3
-   * meson 1.5.2
+   * meson 1.6.0
    * openssl 3.0.15
    * precompiled host-tools 2024-09-28
    * python 3.12.7
 
  - AVM sources:
+   * 3000 ax  7.41 - 4.4.271
+   * 4040     8.00 - 4.4.271
+   * 4050     7.58 - 4.4.271
+   * 5530     8.00 - 4.9.276
    * 5690 pro 7.62 - 5.4.213
-   * 6591     8.00 - 5.15.153 (corrupt)
+   * 6591     8.00 - 5.15.153
+   * 7510     7.30 - 4.4.60 (corrupt)
+   * 7510     8.00 - 4.4.271
+   * 7530     8.00 - 4.4.271
    * 7530 ax  8.00 - 4.19.183 (corrupt)
-   * 7590 ax  8.00 - 4.9.325 (corrupt)
+   * 7590 ax  8.00 - 4.9.325
 
  - Patches:
    * Various Fritzos 8.0 related changes
+   * New Patch: Hide unsecure settings from cockpit
+   * New Patch: Hide internet visualisation from cockpit
+   * New Patch: Hide internet details from cockpit
+   * New Patch: Hide homenet details from cockpit
+   * New Patch: Hide update check from cockpit
 
  - Packages:
    * ACME.sh 3.0.9
    * Atop 2.11.0
-   * BIND 9.11.37/9.20.2
+   * BIND 9.11.37/9.20.3
    * BusyBox 1.27.2/1.37.0
    * CA-bundle 2024-09-24
    * Curl 8.10.1
-   * Git 2.46.2
+   * Dropbear 2024.86
+   * Git 2.47.0
    * htpdate 2.0.0
-   * ImageMagick 7.1.1-38
+   * ImageMagick 7.1.1-39
    * mc (Midnight Commander) 4.8.31/4.8.32
+   * Mosquitto 2.0.20
    * Nano 8.2
    * OpenSSH 9.3p2/9.9p1
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.15
@@ -95,9 +109,10 @@ Latest changes
    * S-Lang 2.3.3
    * strace 4.9/5.0/6.11
    * Stunnel 5.73
-   * SQLite 3.40.1/3.46.1
-   * tmux 3.5
-   * Unbound 1.21.1
+   * SQLite 3.40.1/3.47.0
+   * tmux 3.5a
+   * Tor 0.4.8.13
+   * Unbound 1.22.0
    * XZ 5.6.3
 
  - Libraries:
@@ -107,12 +122,12 @@ Latest changes
    * harfbuzz 10.0.1
    * libcap 2.49/2.70
    * libcap-ng 0.8.5
-   * libdeflate 1.21
+   * libdeflate 1.22
    * libmaxminddb 1.11.0
    * libnettle 3.10
    * libpng 1.6.44
-   * liburcu 0.14.0
-   * libuv 1.44.2/1.49.0
+   * liburcu 0.14.1
+   * libuv 1.44.2/1.49.2
    * libxml2 2.13.4
    * lz4 1.10.0
    * mbedTLS 2.7.19/2.28.9

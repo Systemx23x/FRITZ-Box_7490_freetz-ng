@@ -78,12 +78,12 @@ quit
 
 	local count=0
 	while true; do
-		sleep 0.2
+		sleep 1
 		let count++
 #		grep -q "^ProductID" "$tmpenv" && break
 #		grep -q "^226 " "$tmpout" && break  # Transfer complete
 		grep -q "^221 " "$tmpout" && break  # Thank you for using the FTP service on ADAM2
-		[ $count -gt 15 ] && echo "Timeout!!!!!!!!!!!!!!!!!!" && break
+		[ $count -gt 5 ] && echo "Timeout!!!!!!!!!!!!!!!!!!" && break
 	done
 	kill $log_pid >/dev/null 2>&1  # cant get (simply) correct ftp/ppid in pipe if using tee
 	kill $ftp_pid >/dev/null 2>&1  # this is needed as the FTP client freezes at the end of the file transfer
@@ -124,10 +124,10 @@ function push_fw() {
 	local HWR_ENV="$( echo "$env_ProductID" | sed -nr 's/.*_HW(...).*/\1/p')"
 	local HWR_IMG="$( echo "$PRODUCT"       | sed -nr 's/.*_HW(...).*/\1/p')"
 	if [ -n "$PRODUCT" ] && [ "$HWR_IMG" != "$HWR_ENV" ]; then
-		echo "Error, ProductID of image ($HWR_IMG) does not match device ($HWR_ENV)!"
+		echo "Error, ProductID of image (HWR$HWR_IMG) does not match device (HWR$HWR_ENV)!"
 		echo -n "Type 'c' to ignore and continue: "
 		read -n1 -t9 c
-		[ "$?" != "0" ] && echo -e "¿\nTimeout" && exit 1
+		[ "$?" != "0" ] && echo -e "\nTimeout" && exit 1
 		[ "$c" != "c" ] && echo -e "\nAborted" && exit 1
 		echo -e "\n"
 	fi
@@ -142,9 +142,14 @@ function push_fw() {
 
 		[ $ISRAM ] && FILESIZE="$(stat --printf='%s' "$mtdram1")"
 		[ $ISFIT ] && FILESIZE="$(stat --printf='%s' "$fitimage")"
-		[ "$ALIBYTES" != "0" ] && ALIBYTES="$(( $ALIBYTES - ( $FILESIZE % $ALIBYTES ) ))"
+		if [ "$ALIBYTES" != "0" ]; then
+			[ "$(( $FILESIZE % $ALIBYTES ))" == "0" ] && ALIBYTES=0 || ALIBYTES="$(( $ALIBYTES - ( $FILESIZE % $ALIBYTES ) ))"
+		fi
+
 		FILESIZE="0x$(printf '%.8x' $(( $FILESIZE )) )"
 		ALIBYTES="0x$(printf '%.8x' $(( $ALIBYTES )) )"
+		[ $ISFIT ] && \
+		FILLSIZE="0x$(printf '%.8x' $(( $FILESIZE + $ALIBYTES )) )"
 		MAPSTART="0x$(printf '%.8x' $(( $MAPSTART )) )"
 		MAPLIMIT="0x$(printf '%.8x' $(( $MAPSTART + $FULLSIZE                         )) )"
 		FREESIZE="0x$(printf '%.8x' $((             $FULLSIZE - $FILESIZE - $ALIBYTES )) )"
@@ -155,6 +160,8 @@ function push_fw() {
 		echo -e " * MAPLIMIT=$MAPLIMIT"
 		echo -e " * FILESIZE=$FILESIZE\t (~$(($FILESIZE/1024/1024)) MB)"
 		echo -e " * ALIBYTES=$ALIBYTES\t (~$(($ALIBYTES/1024     )) kB)"
+		[ $ISFIT ] && \
+		echo -e " * FILLSIZE=$FILLSIZE\t (~$(($FILLSIZE/1024/1024)) MB)"
 		echo -e " * FREESIZE=$FREESIZE\t (~$(($FREESIZE/1024/1024)) MB)"
 		echo -e " * MTDSTART=$MTDSTART"
 		echo -e
@@ -233,7 +240,7 @@ function push_fw() {
 				-o doNotGetStartCWD=1,useFEAT=0,useHELP_SITE=0,useCLNT=0,useSIZE=0,useMDTM=0 \
 				-W "quote MEDIA SDRAM" \
 				-W "quote SETENV memsize ${FREESIZE}" \
-				-W "quote SETENV kernel_args_tmp \"${AFU}mtdram1=${MTDSTART},${MAPLIMIT} mtdparts_ext=update-image.0:${FILESIZE}@0x0(fit-image)\"" \
+				-W "quote SETENV kernel_args_tmp \"${AFU}mtdram1=${MTDSTART},${MAPLIMIT} mtdparts_ext=update-image.0:${FILLSIZE}@0x0(fit-image)\"" \
 				-Y "quote QUIT" \
 				$ip ${fitimage} "${MTDSTART} ${MAPLIMIT}" || exit $?
 		elif [ $ISRAM ]; then
@@ -303,7 +310,7 @@ debug
 bin
 quote MEDIA SDRAM
 quote SETENV memsize ${FREESIZE}
-quote SETENV kernel_args_tmp \"${AFU}mtdram1=${MTDSTART},${MAPLIMIT} mtdparts_ext=update-image.0:${FILESIZE}@0x0(fit-image)\"
+quote SETENV kernel_args_tmp \"${AFU}mtdram1=${MTDSTART},${MAPLIMIT} mtdparts_ext=update-image.0:${FILLSIZE}@0x0(fit-image)\"
 put ${fitimage} "${MTDSTART} ${MAPLIMIT}"
 quit
 EOT
@@ -377,8 +384,12 @@ prepare_image() {
 		fitimage="$tmpdir/fitboot.flash"
 		if tar -C $tmpdir/ -xf $file --wildcards '*/fit-image' >/dev/null 2>&1; then
 			if [ -s "$tmpdir/var/tmp/fit-image" ]; then
-				mv "$tmpdir/var/tmp/fit-image" "$fitimage"
-			fi
+				cat "$tmpdir/var/tmp/fit-image"
+				# fill last 256bytes with 0xFF
+				local byte="$(stat --printf='%s' "$fitimage")"
+				local fill="$(( ( 256 - $byte % 256 ) % 256 ))"
+				[ "$fill" != "0" ] && head /dev/zero -c $fill | LC_ALL=C tr "\000" "\377"
+			fi > "$fitimage"
 		fi
 		if [ ! -s "$fitimage" ]; then
 			echo -e "Error: file is not a valid fit-boot image to be written to the device.\n" >&2
@@ -474,7 +485,7 @@ trap cleanup EXIT SIGTERM SIGINT
 usage() {
 cat << EOX
 
-Usage: $0 [image] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ -ali <kb> ] [ -mem <mb> ] [ -lfs <0|1|9> ] [ -cmd <ftp|ncftp> ] [ -hn ]
+Usage: $0 [image] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ -ali <kb> ] [ -mem <mb> ] [ -lfs <0|1|9> ] [ -prg <ftp|ncftp> ] [ -hn ]
 
 [image]           When no 'image' file is given, images/latest.image will be tried.
 -f                Disable safety prompt, force instant flash.
@@ -491,7 +502,7 @@ Usage: $0 [image] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ -ali <kb> ] [ -mem
                     Without this parameter, the inactive linux_fs_start will be used.
                     Use '9' for the currently active linux_fs_start.
 -afu              Only fit-boot: No avm_fwupdate, run system from ram without flash it.
--cmd <ftp|ncftp>  Force the prefered usage of ncftp (buggy) or ftp command for upload.
+-prg <ftp|ncftp>  Force the prefered usage of ncftp (buggy) or ftp command for upload.
 -hn               Only single-boot mode: Flash to an 'Alice/HanseNet' version of 7570.
 
 This scipt supports currently single-, ram-, dual-, uimg- and fit-boot modes, for more
@@ -555,7 +566,7 @@ while [ $# -ge 1 ]; do
 			NOAFU=true
 			shift
 			;;
-		(-cmd)
+		(-prg)
 			[ "$2" != "ftp" -a "$2" != "ncftp" ] && echo "Invalid command value" && usage
 			CMD=$2
 			shift
