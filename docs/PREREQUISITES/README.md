@@ -324,8 +324,22 @@ sudo apt-get -y install \
 ### Mint
 Mint wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Ubuntu vorgeschlagen werden.
 
-### Kali
-Kali rolling wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Ubuntu vorgeschlagen werden.
-Das meiste wird bei Kali sowieso schon dabei installiert sein.
+### Kali GNU/Linux
+```
+To Add the Prerequisites Kali OS - Addon - Download this small Package and Extract it to ~/Freetz-NG
+```
+
+<a href=https://github.com/Systemx23x/FRITZ-Box_7490_freetz-ng/releases/download/Addon/Freetz-NG_add_prerequisites_Kali_install.zip>Addon - add Kali-OS Preq. Install</a>
+
+```
+sudo apt -y install \
+  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
+  gcc-multilib gettext git graphicsmagick imagemagick inkscape intltool java-wrappers kmod \
+  lib32ncurses-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev libelf-dev \
+  libglib2.0-dev libgnutls28-dev libncurses-dev libreadline-dev libsqlite3-dev libssl-dev \
+  libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make netcat-traditional patch perl \
+  pkg-config pv rsync sharutils sqlite3 subversion sudo texinfo tofrodos unar unzip uuid-dev wget \
+  zlib1g-dev
+```
 
 
